@@ -15,8 +15,7 @@ class VRActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityVrBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         val mWebView: WebView = binding.webView // 웹뷰 설정
         val mWebSettings: WebSettings = mWebView.settings // 웹뷰 세팅 등록

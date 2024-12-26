@@ -6,15 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:background="@color/white"
     tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Mand.ro"
+        app:titleTextColor="@color/white"
+        android:theme="?attr/actionBarTheme" />
 
     <Button
         android:id="@+id/btnGoToVRActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="350dp"
         android:text="Start VR"
-        android:textColor="@color/white"/>
+        android:textSize="24sp"
+        android:textColor="@color/white" />
 
 </LinearLayout>
