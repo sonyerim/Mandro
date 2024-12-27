@@ -1,6 +1,9 @@
 package com.example.mandro
 
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mandro.databinding.ActivityVrBinding
 import android.webkit.WebSettings
@@ -32,6 +35,6 @@ class VRActivity : AppCompatActivity() {
         mWebSettings.cacheMode = WebSettings.LOAD_NO_CACHE // 브라우저 캐시 허용 여부
         mWebSettings.domStorageEnabled = true // 로컬 저장소 허용 여부
 
-        mWebView.loadUrl("http://192.168.0.138:8000/index.html") // 웹뷰에 표시할 라즈베리파이 주소, 웹뷰 시작
+        mWebView.loadUrl("http://192.168.0.175:8000/index.html") // 웹뷰에 표시할 라즈베리파이 주소, 웹뷰 시작
     }
 }
