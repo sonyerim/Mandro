@@ -18,14 +18,19 @@
         app:titleTextColor="@color/white"
         android:theme="?attr/actionBarTheme" />
 
-    <Button
-        android:id="@+id/btnGoToVRActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="350dp"
-        android:text="Start VR"
-        android:textSize="24sp"
-        android:textColor="@color/white" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnGoToVRActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Start VR"
+            android:textSize="24sp"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
 </LinearLayout>
