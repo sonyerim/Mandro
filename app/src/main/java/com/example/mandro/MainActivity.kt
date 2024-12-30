@@ -3,6 +3,7 @@ package com.example.mandro
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -20,9 +21,12 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        // 버튼 클릭 시 VRActivity로 이동
+        val etIpAddress = binding.etIpAddress
+
+        // 버튼 클릭 시 IP 주소 넘겨주고, VRActivity로 이동
         binding.btnGoToVRActivity.setOnClickListener {
             val intent = Intent(this, VRActivity::class.java)
+            intent.putExtra("raspberry_ip", etIpAddress.text.toString())
             startActivity(intent)
         }
     }
