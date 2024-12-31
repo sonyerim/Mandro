@@ -27,7 +27,7 @@
             android:id="@+id/etIpAddress"
             android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:hint="Enter IP Address"
+            android:hint="192.168.0.175"
             android:inputType="text" />
         <Button
             android:id="@+id/btnGoToVRActivity"
