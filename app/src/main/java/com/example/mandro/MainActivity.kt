@@ -22,11 +22,18 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         val etIpAddress = binding.etIpAddress
+        val etIpAddress2 = binding.etIpAddress2
 
         // 버튼 클릭 시 IP 주소 넘겨주고, VRActivity로 이동
         binding.btnGoToVRActivity.setOnClickListener {
             val intent = Intent(this, VRActivity::class.java)
             intent.putExtra("raspberry_ip", etIpAddress.text.toString())
+            startActivity(intent)
+        }
+
+        binding.btnGoToUdpActivity.setOnClickListener {
+            val intent = Intent(this, UdpActivity::class.java)
+            intent.putExtra("raspberry_ip", etIpAddress2.text.toString())
             startActivity(intent)
         }
     }
