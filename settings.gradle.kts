@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Mandro"
 include(":app")
- 
+include(":opencv")
