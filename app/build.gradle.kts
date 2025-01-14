@@ -46,11 +46,14 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(project(":opencv"))
+    //implementation(project(":opencv"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.google.android.exoplayer:exoplayer:2.18.1")
+    //implementation("androidx.media3:media3-exoplayer-rtsp:1.5.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    //implementation("com.android.tools.build:gradle:8.0.2")
+    implementation("com.android.volley:volley:1.2.1")
 
 }
