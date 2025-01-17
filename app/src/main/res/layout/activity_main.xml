@@ -29,101 +29,56 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <!--        <EditText-->
-            <!--            android:id="@+id/rightInput"-->
-            <!--            android:layout_width="200dp"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:hint="Enter right value"-->
-            <!--            android:text="17"-->
-            <!--            android:textColor="@color/black"/>-->
-            <!--        <EditText-->
-            <!--            android:id="@+id/leftInput"-->
-            <!--            android:layout_width="200dp"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:hint="Enter left value"-->
-            <!--            android:text="17"-->
-            <!--            android:textColor="@color/black" />-->
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Set Your Eye distance!"
+                android:text="Eye distance:"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <SeekBar
                 android:id="@+id/eyeDistance"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
+                android:layout_width="360dp"
+                android:layout_height="30dp"
                 android:layout_marginBottom="50dp"
                 android:max="34"
                 android:progress="17"
                 android:progressTint="@color/navy"
-                android:thumbTint="@color/navy" />
-
-            <!--        <Button-->
-            <!--            android:id="@+id/sendButton"-->
-            <!--            android:layout_width="200dp"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:text="Set Eye distance"-->
-            <!--            android:textSize="18sp"-->
-            <!--            android:textColor="@color/white"-->
-            <!--            android:layout_marginBottom="40dp" />-->
+                android:thumbTint="@color/navy"
+                android:progressDrawable="@drawable/custom_seekbar_progress"
+                android:thumb="@drawable/custom_thumb" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Write RaspberryPi Ip Adderess!"
+                android:text="Ip Address:"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
+
             <EditText
                 android:id="@+id/etIpAddress"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="50dp"
                 android:gravity="center"
                 android:hint="192.168.0.138"
                 android:text="192.168.0.138"
+                android:textSize="24dp"
                 android:inputType="text"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:background="@drawable/box_border"/>
 
             <Button
                 android:id="@+id/btnGoToVR"
-                android:layout_width="300dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
                 android:text="Start VR"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-            <!--        <EditText-->
-            <!--            android:id="@+id/etIpAddress2"-->
-            <!--            android:layout_width="200dp"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:hint="192.168.0.138"-->
-            <!--            android:text="192.168.0.138"-->
-            <!--            android:textColor="@color/black"-->
-            <!--            android:inputType="text" />-->
-            <!--        <Button-->
-            <!--            android:id="@+id/btnGoToUdp"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:text="UDP"-->
-            <!--            android:textSize="24sp"-->
-            <!--            android:textColor="@color/white"-->
-            <!--            android:layout_marginTop="20dp"/>-->
-
-            <!--        <Button-->
-            <!--            android:id="@+id/btnGoToOpencv"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:text="Opencv"-->
-            <!--            android:textSize="24sp"-->
-            <!--            android:textColor="@color/white"-->
-            <!--            android:layout_marginTop="20dp"/>-->
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>
