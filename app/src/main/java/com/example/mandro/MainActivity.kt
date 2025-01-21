@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var requestQueue: RequestQueue
-    private var eyeDistance: String = "17"
+    private var eyeDistance: String = "-17"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,31 +48,41 @@ class MainActivity : AppCompatActivity() {
         requestQueue = Volley.newRequestQueue(this)
 
         val etIpAddress = binding.etIpAddress
+        val distorted = binding.switchDistorted
 
         binding.btnSet.setOnClickListener {
-            sendValuesToRaspberryPi(eyeDistance, etIpAddress.text.toString())
+            val distortedValue = if (distorted.isChecked) "true" else "false"
+            sendValuesToRaspberryPi(eyeDistance, distortedValue, etIpAddress.text.toString())
             Toast.makeText(this, "값이 변경되었습니다.", Toast.LENGTH_SHORT).show()
 
         }
 
         // 버튼 클릭 시 IP 주소 넘겨주고, VRActivity로 이동
-        binding.btnNormal.setOnClickListener {
+        binding.btnVR.setOnClickListener {
+            sendGetRequestToRaspberryPi(etIpAddress.text.toString())
             val intent = Intent(this, VRActivity::class.java)
             intent.putExtra("raspberry_ip", etIpAddress.text.toString())
-            intent.putExtra("stream_path", "/normal")
+            intent.putExtra("stream_path", "/index.html")
             startActivity(intent)
         }
 
-        binding.btnDistored.setOnClickListener {
-            val intent = Intent(this, VRActivity::class.java)
-            intent.putExtra("raspberry_ip", etIpAddress.text.toString())
-            intent.putExtra("stream_path", "/distorted")
-            startActivity(intent)
-        }
+//        binding.btnNormal.setOnClickListener {
+//            val intent = Intent(this, VRActivity::class.java)
+//            intent.putExtra("raspberry_ip", etIpAddress.text.toString())
+//            intent.putExtra("stream_path", "/normal")
+//            startActivity(intent)
+//        }
+//
+//        binding.btnDistored.setOnClickListener {
+//            val intent = Intent(this, VRActivity::class.java)
+//            intent.putExtra("raspberry_ip", etIpAddress.text.toString())
+//            intent.putExtra("stream_path", "/distorted")
+//            startActivity(intent)
+//        }
 
     }
 
-    private fun sendValuesToRaspberryPi(eyeDistance: String, ipAddress: String) {
+    private fun sendValuesToRaspberryPi(eyeDistance: String, distorted: String, ipAddress: String) {
         val url = "http://${ipAddress}:8000/update"
         val stringRequest = object : StringRequest(Request.Method.POST, url,
             { response -> Log.d("Response", response) },
@@ -80,12 +90,32 @@ class MainActivity : AppCompatActivity() {
             override fun getParams(): MutableMap<String, String> {
                 return mutableMapOf(
                     "left" to eyeDistance,
-                    "right" to eyeDistance
+                    "right" to eyeDistance,
+                    "distorted" to distorted
                 )
             }
         }
         requestQueue.add(stringRequest)
     }
+
+    private fun sendGetRequestToRaspberryPi(ipAddress: String) {
+        val url = "http://${ipAddress}:8000/"
+
+        val stringRequest = StringRequest(
+            Request.Method.GET,
+            url,
+            { response ->
+                Log.d("Response", response) // 서버 응답 로그
+            },
+            { error ->
+                Log.e("Error", error.toString()) // 에러 로그
+            }
+        )
+
+        // 요청을 큐에 추가
+        requestQueue.add(stringRequest)
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
