@@ -23,6 +23,7 @@ class VRActivity : AppCompatActivity() {
         val mWebView: WebView = binding.webView // 웹뷰 설정
         val mWebSettings: WebSettings = mWebView.settings // 웹뷰 세팅 등록
         val raspberryIp = intent.getStringExtra("raspberry_ip")
+        val streamPath = intent.getStringExtra("stream_path")
 
         mWebView.webViewClient = WebViewClient() // 클릭시 새창 안 뜨게
         mWebSettings.javaScriptEnabled = true // 웹페이지 자바스크립트 허용 여부
@@ -36,9 +37,9 @@ class VRActivity : AppCompatActivity() {
         mWebSettings.cacheMode = WebSettings.LOAD_NO_CACHE // 브라우저 캐시 허용 여부
         mWebSettings.domStorageEnabled = true // 로컬 저장소 허용 여부
 
-        if (raspberryIp != null) {
-            val url = "http://$raspberryIp:8000/index.html"
-            mWebView.loadUrl(url) // 웹뷰에 라즈베리파이 주소 로드
+        if (raspberryIp != null && streamPath != null) {
+            val url = "http://${raspberryIp}:8000${streamPath}"
+            mWebView.loadUrl(url)
         }
     }
 }

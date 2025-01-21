@@ -37,47 +37,39 @@ class MainActivity : AppCompatActivity() {
                 // SeekBar의 현재 progress 값을 eyeDistance로 업데이트
                 eyeDistance = progress.toString()
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                // SeekBar를 조작하기 시작했을 때 동작 (필요 없으면 빈 메서드로 둡니다)
+                // SeekBar를 조작하기 시작했을 때 동작
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                // SeekBar 조작을 멈췄을 때 동작 (필요 없으면 빈 메서드로 둡니다)
+                // SeekBar 조작을 멈췄을 때 동작
             }
         })
 
         requestQueue = Volley.newRequestQueue(this)
 
-//        binding.sendButton.setOnClickListener {
-//            val leftValue = binding.leftInput.text.toString()
-//            val rightValue = binding.rightInput.text.toString()
-//            sendValuesToRaspberryPi(leftValue)
-//            Toast.makeText(this, "값이 변경되었습니다.", Toast.LENGTH_SHORT).show()
-//        }
-
         val etIpAddress = binding.etIpAddress
-//        val etIpAddress2 = binding.etIpAddress2
+
+        binding.btnSet.setOnClickListener {
+            sendValuesToRaspberryPi(eyeDistance, etIpAddress.text.toString())
+            Toast.makeText(this, "값이 변경되었습니다.", Toast.LENGTH_SHORT).show()
+
+        }
 
         // 버튼 클릭 시 IP 주소 넘겨주고, VRActivity로 이동
-        binding.btnGoToVR.setOnClickListener {
+        binding.btnNormal.setOnClickListener {
             val intent = Intent(this, VRActivity::class.java)
             intent.putExtra("raspberry_ip", etIpAddress.text.toString())
-            sendValuesToRaspberryPi(eyeDistance, etIpAddress.text.toString())
+            intent.putExtra("stream_path", "/normal")
             startActivity(intent)
         }
 
-//        binding.btnGoToUdp.setOnClickListener {
-//            val intent = Intent(this, UdpActivity::class.java)
-//            intent.putExtra("raspberry_ip", etIpAddress2.text.toString())
-//            startActivity(intent)
-//        }
+        binding.btnDistored.setOnClickListener {
+            val intent = Intent(this, VRActivity::class.java)
+            intent.putExtra("raspberry_ip", etIpAddress.text.toString())
+            intent.putExtra("stream_path", "/distorted")
+            startActivity(intent)
+        }
 
-//        binding.btnGoToOpencv.setOnClickListener {
-//            val intent = Intent(this, OpencvActivity::class.java)
-//            intent.putExtra("raspberry_ip", etIpAddress2.text.toString())
-//            startActivity(intent)
-//        }
     }
 
     private fun sendValuesToRaspberryPi(eyeDistance: String, ipAddress: String) {
