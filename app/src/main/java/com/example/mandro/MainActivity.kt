@@ -58,27 +58,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 버튼 클릭 시 IP 주소 넘겨주고, VRActivity로 이동
-        binding.btnVR.setOnClickListener {
+        binding.btnStart.setOnClickListener {
             sendGetRequestToRaspberryPi(etIpAddress.text.toString())
             val intent = Intent(this, VRActivity::class.java)
             intent.putExtra("raspberry_ip", etIpAddress.text.toString())
             intent.putExtra("stream_path", "/index.html")
             startActivity(intent)
         }
-
-//        binding.btnNormal.setOnClickListener {
-//            val intent = Intent(this, VRActivity::class.java)
-//            intent.putExtra("raspberry_ip", etIpAddress.text.toString())
-//            intent.putExtra("stream_path", "/normal")
-//            startActivity(intent)
-//        }
-//
-//        binding.btnDistored.setOnClickListener {
-//            val intent = Intent(this, VRActivity::class.java)
-//            intent.putExtra("raspberry_ip", etIpAddress.text.toString())
-//            intent.putExtra("stream_path", "/distorted")
-//            startActivity(intent)
-//        }
 
     }
 
