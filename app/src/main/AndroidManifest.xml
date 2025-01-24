@@ -17,18 +17,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".OpencvActivity"
-            android:exported="false" />
-        <activity
             android:name=".UdpActivity"
             android:exported="false" />
         <activity
-            android:name=".GstreamActivity"
-            android:exported="false" />
-        <activity
             android:name=".VRActivity"
-            android:exported="false"
-            android:screenOrientation="landscape" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
